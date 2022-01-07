@@ -116,6 +116,11 @@ export class AppController {
     Data.orders.push(body)
   }
 
+  @Get('/nextEstabilish')
+   next(){
+     return Data.EstabelecimentosProximos;
+   }
+
   @Get('/hortiFruit')
    hortiFruit(){
       return Data.EstabelecimentoHortiFruit;

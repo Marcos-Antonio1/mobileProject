@@ -230,7 +230,30 @@ const  buyer =[
       ]
     }
   ]
-
+  
+  const EstabelecimentosProximos = [
+    {
+      id:1,
+      nome:"Cortes limpos",
+      latitude:null,
+      longitude:null,
+      image: "https://thumbs.dreamstime.com/z/imagens-do-alimento-ajustadas-ilustra%C3%A7%C3%B5es-da-carne-cartaz-para-o-a%C3%A7ougue-102379506.jpg" ,
+    },
+    {
+      id:2,
+      nome:"Massas 5r",
+      latitude:null,
+      longitude:null,
+      image:'http://conteudo.imguol.com.br/c/entretenimento/45/2020/10/19/pao-frances---dona-deola-1603113166267_v2_1920x1920.jpg',
+    },
+    {
+      id:3,
+      nome:"L Água",
+      latitude:null,
+      longitude:null,
+      image: 'https://www.setegotas.com.br/wp-content/uploads/2017/03/gal%C3%A3o-de-%C3%A1gua-mineral.jpg' ,
+    }
+  ]
 
 const Data ={
     buyer,
@@ -239,7 +262,8 @@ const Data ={
     EstabelecimentoHortiFruit,
     EstabelecimentoAcouque,
     EstabelecimentoAgua,
-    EstabelecimentoPadaria
+    EstabelecimentoPadaria,
+    EstabelecimentosProximos
     
 }
 
