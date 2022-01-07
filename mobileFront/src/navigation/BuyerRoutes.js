@@ -15,6 +15,7 @@ import { Login } from "../screens/Login";
 import { Registration } from "../screens/Registration";
 import { OrdemTrackingFinish } from "../screens/buyer/OrdemTrackingFinish";
 import { OrdenOpenList } from "../screens/buyer/OrdenOpenList";
+import Maps from "../screens/buyer/Maps";
  
 const Stack = createStackNavigator();
 export const BuyerRoutes = () => {
@@ -101,6 +102,11 @@ export const BuyerRoutes = () => {
             <Stack.Screen
             name="OrdenOpenList"
             component={ OrdenOpenList }
+            />
+
+            <Stack.Screen
+            name="Maps"
+            component={ Maps }
             />
 
         </Stack.Navigator>

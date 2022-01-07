@@ -23,7 +23,9 @@ export const SeachProducts = ({navigation}) => {
                 <MyCarousel
                 />
             </View>
-            <TouchableOpacity  style={styles.footArea}>
+            <TouchableOpacity  style={styles.footArea}
+             onPress={()=>goToMap()}
+            >
                 <Text style={styles.textFoot}>
                     Encontre os estabelecimentos mais próximos de você!
                 </Text>
@@ -33,6 +35,10 @@ export const SeachProducts = ({navigation}) => {
 
     function goToSerach(){
         navigation.navigate("ResultSearch")
+    }
+
+    function goToMap(){
+        navigation.navigate('Maps')
     }
 }
 
