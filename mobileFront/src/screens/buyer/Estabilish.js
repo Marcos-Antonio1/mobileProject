@@ -3,16 +3,14 @@ import {StyleSheet, FlatList,Image,View, SafeAreaView, Text,TouchableOpacity,Ale
 import { Avatar, Card } from 'react-native-paper'
 import { FontAwesome } from '@expo/vector-icons';
 
-
-
 export const Estabilish =({route,navigation}) =>{
     const {item} = route.params;
     const [data,setData]=React.useState('')
-    const [itensAdd,SetitensAdd] = React.useState([])
+    const [itensCart,SetitensCart] = React.useState([])
     
     useEffect(() => {
         setData(item)
-    },[])
+    },)
 
     const _render = ({item}) =>(
         <TouchableOpacity style={ styles.productArea} onPress={()=>goToDescription(item)} >
@@ -22,7 +20,7 @@ export const Estabilish =({route,navigation}) =>{
                  <Text style={styles.textPrice}>R$ {item.preco},00</Text>   
             </View>
             <TouchableOpacity style={{marginLeft:20}}
-             onPress={()=>addToCart()} 
+             onPress={()=>addToCart(item)} 
             >
                 <FontAwesome name="plus" size={30} color="green" />
             </TouchableOpacity>
@@ -54,10 +52,26 @@ export const Estabilish =({route,navigation}) =>{
     );
     
     function goToCar(){
-        navigation.navigate("ShoppingCart");
+        navigation.navigate("ShoppingCart",{itensCart});
     }
-    function addToCart(){
-        Alert.alert("Item adicionado ao carrinho!")
+
+    function addToCart(product){
+        let itemadd = false;
+
+        itensCart.forEach(function(elem, index){
+             if(elem.idProduto == product.idProduto){
+                itemadd = true;        
+             }
+        })
+
+        if(!itemadd){
+            SetitensCart(()=>[{ qtd_compra:1,...product},...itensCart])
+            Alert.alert("Item adicionado ao carrinho!")
+            
+        }else{
+            Alert.alert("Item já adicionado ao carrinho!")
+        }
+        
     }
 }
 

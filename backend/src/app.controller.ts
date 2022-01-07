@@ -123,7 +123,7 @@ const EstabelecimentoAcouque =[
         image:'https://dourados.saofranciscoonline.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/c/a/carne-moida-bovina-2-resfriada-kg-0000000095273.jpg'
       },
       {
-        idProduto:1, 
+        idProduto:2, 
         nome:" 1Kg costela de porco", 
         qtd:10, 
         preco:25, 
@@ -145,7 +145,7 @@ const EstabelecimentoAcouque =[
         image:'https://dourados.saofranciscoonline.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/c/a/carne-moida-bovina-2-resfriada-kg-0000000095273.jpg'
       },
       {
-        idProduto:1, 
+        idProduto:2, 
         nome:" 1Kg costela de porco", 
         qtd:10, 
         preco:18, 
@@ -248,6 +248,8 @@ interface Track {
 @Controller()
 export class AppController {
   _ids= 1;
+  _idsOrder=5;
+
   constructor(private readonly appService: AppService) {}
   
   @Get()
@@ -258,6 +260,7 @@ export class AppController {
   @Post('/registerBuyer')
   registerBuyer(@Body ()body){
     body.id =this._ids+1;
+    this._ids=+1
     buyer.push(body)
   }
 
@@ -326,6 +329,27 @@ export class AppController {
             orders.splice(index,1);
          }
      })
+  }
+
+  @Post('/order')
+  order(@Body() body){
+    body.id = this._idsOrder+1
+    this._idsOrder +=1
+    body.status ="pedido em andamento"
+    var data= new Date();
+    var hora =data.getHours()
+    var minutes =data.getMinutes()
+    var str_hora = hora + ':' + minutes
+    body.tracking= [
+      {time: str_hora, title: 'Pedido finalizado',circleSize:16, description:"Pedido finalizado aguarde a separação do estoque",lineWidth:8},
+      {title: 'Separação de estoque',circleSize:16, description:"Está quase tudo pronto para a saída do seu pedido!", lineColor:"#D1CACA",lineWidth:8},
+      {title: 'Em Transporte',circleSize:16, description:"Seu pedido saiu para a entrega",lineWidth:8,lineColor:"#D1CACA",circleColor:"#D1CACA"},
+      {title: 'Entrega realizada',circleSize:16,lineWidth:8,circleColor:"#D1CACA"}
+    ]
+
+    orders.push(body)
+
+    console.log(orders)
   }
 
   @Get('/hortiFruit')

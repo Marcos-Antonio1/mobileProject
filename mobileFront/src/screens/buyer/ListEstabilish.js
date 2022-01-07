@@ -4,41 +4,6 @@ import Estabelecimento from '../../assets/estabelecimento.png'
 import { Avatar } from 'react-native-paper'
 import BuyerProvider from '../../services/providers/BuyerProvider';
 
-
-const dados = [
-    {
-        id:1,
-        nome:"estabelecimento 1",
-        imagem:Image.resolveAssetSource(Estabelecimento).uri
-    },
-    {
-        id:2,
-        nome:"estabelecimento 2",
-        imagem:Image.resolveAssetSource(Estabelecimento).uri
-    },
-    {
-        id:3,
-        nome:"estabelecimento 3",
-        imagem:Image.resolveAssetSource(Estabelecimento).uri
-    },
-    {
-        id:4,
-        nome:"estabelecimento 4 ",
-        imagem:Image.resolveAssetSource(Estabelecimento).uri
-    },
-    {
-        id:5,
-        nome:"estabelecimento 4 ",
-        imagem:Image.resolveAssetSource(Estabelecimento).uri
-    },
-    {
-        id:6,
-        nome:"estabelecimento 4 ",
-        imagem:Image.resolveAssetSource(Estabelecimento).uri
-    },
-
-]
-
 export const ListEstabilish = ({route,navigation}) =>{
     
 

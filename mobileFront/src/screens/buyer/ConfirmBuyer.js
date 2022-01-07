@@ -1,13 +1,39 @@
-import React from "react";
-import { Text, View, StyleSheet, ScrollView, SafeAreaView,Picker,Alert} from 'react-native';
+import React,{useEffect,useContext} from "react";
+import { Text, View, StyleSheet, ScrollView, SafeAreaView,Picker,Alert,FlatList} from 'react-native';
 import { Button } from 'react-native-paper';
+import {AuthContext} from '../../context/AuthContext';
+import BuyerProvider from '../../services/providers/BuyerProvider';
 
 
 
-export const ConfirmBuyer = ({navigation}) => {
+export const ConfirmBuyer = ({route,navigation}) => {
+    
+    const {itens} = route.params;
     const [selectedValue,setSelectedValue]=React.useState()
     const[method,setMethod] =React.useState()
+    const [products,setProducts] = React.useState(itens)
+    const [total,setTotal]= React.useState()
+    const {user} =useContext(AuthContext)
+
+    useEffect(() => {
+        calcTotal()
+         
+    })
     
+    async function calcTotal(){
+        const valor = await itens.reduce(function(total,obj){
+            return total + (obj.preco *obj.qtd_compra)
+        },0)
+        
+        setTotal(valor)
+       
+    }
+    const _render = ({item}) =>(
+        <>
+            <Text style={styles.TextList}> {item.nome}: R$ {item.preco},00  x{item.qtd_compra}</Text>
+        </>
+    )
+
     return (
         <SafeAreaView style={styles.container}
             horizontal={true}
@@ -23,13 +49,18 @@ export const ConfirmBuyer = ({navigation}) => {
                             <Text style={styles.TextDescription}>
                                 Descrição:
                             </Text>
-                            <Text style={styles.TextList}> 2 kg de paẽs: R$ 3,00</Text>
-                            <Text style={styles.TextList} > 1 Litro de leite: R$ 2,50</Text>
+                            <SafeAreaView >
+                                <FlatList
+                                    data={products}
+                                    renderItem={_render}
+                                    keyExtractor= {item =>item.id}
+                                />
+                            </SafeAreaView>
                         </View>
                     </View>
                     <View style={styles.account}>
                         <Text style={styles.textAcount}>
-                            Total: R$ 5,50
+                            Total: R$ {total},00
                         </Text>
                     </View>
 
@@ -41,8 +72,7 @@ export const ConfirmBuyer = ({navigation}) => {
                 style={{ height: 50, width: 300,border: '1px solid'}}
                 onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
                 >
-                <Picker.Item label="Rua tal avenida aquela la" value="1" />
-                <Picker.Item label="rua arizona avenida dos perdidos" value="2" />
+                <Picker.Item label={`Rua ${user[1].rua},bairro ${user[1].bairro} n⁰ 35` } value="1" />
                 </Picker>
 
                 <Text style={styles.textOp}>Método de pagamento :</Text>
@@ -64,8 +94,17 @@ export const ConfirmBuyer = ({navigation}) => {
         </SafeAreaView>
     );
 
-     function finishBuyer(){
-        navigation.navigate("OrderTracking")
+     async function finishBuyer(){
+         const dados = {
+             total,
+             itens : products
+        }
+          await BuyerProvider.order(dados)
+         
+        
+          Alert.alert("O pedido foi  realizado ")
+         navigation.navigate("HomeBuyer")
+
     }
 }
 const styles = StyleSheet.create({

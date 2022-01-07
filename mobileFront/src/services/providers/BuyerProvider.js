@@ -88,6 +88,15 @@ const padaria = async () => {
     }
 }
 
+const order = async ( data ) => {
+    try {
+        let response = await api.post('order', data);
+        //return response.data
+    } catch (err) {
+        throw err;
+    }
+}
+
 
 const BuyerProvider ={
     registerBuyer,
@@ -99,7 +108,8 @@ const BuyerProvider ={
     hortiFruit,
     acouque,
     agua,
-    padaria
+    padaria,
+    order
 }
 
 export default BuyerProvider;
