@@ -5,7 +5,8 @@ import {
     SafeAreaView,
     TextInput,
     Alert,
-    KeyboardAvoidingView
+    KeyboardAvoidingView,
+    Text
 } from "react-native";
 
 import { Avatar , Button} from 'react-native-paper';
@@ -22,11 +23,14 @@ export const Login = ({navigation}) => {
     
     return (
         <View style= {styles.container}>
+             
+             <Text style= {styles.title}>Market Open</Text>
+      
             <Avatar.Image 
             size={180} 
             style={styles.logo}
+            source={require("../assets/openMarket.png")}
             />
-
         <KeyboardAvoidingView style ={ styles.inputs} >
             <TextInput
                 autoCapitalize="none"
@@ -129,5 +133,10 @@ const styles = StyleSheet.create({
         height:40,
         alignSelf:'center',
         fontSize:12
+    },
+    title:{
+        alignSelf:'center',
+        fontSize:30,
+        marginBottom:20
     }
   });
