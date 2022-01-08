@@ -1,5 +1,5 @@
 import React,{useContext,useEffect} from 'react';
-import {View,Text,StyleSheet} from 'react-native';
+import {View,Text,StyleSheet,KeyboardAvoidingView} from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
 import {getStoragedUser} from '../../services/Storage';
 import {AuthContext} from '../../context/AuthContext';
@@ -19,7 +19,7 @@ export const EditData = ({navigation}) =>{
     return(
         <View style={styles.container}>
             <Text style={styles.textTitle}>Editar Dados</Text>
-            <View>
+            <KeyboardAvoidingView>
                 <TextInput
                     mode="outlined"
                     label="Nome"
@@ -52,7 +52,7 @@ export const EditData = ({navigation}) =>{
                     value={rua}
                     onChangeText={text => setRua(text)}
                 />
-            </View>
+            </KeyboardAvoidingView>
             <View style={{marginTop:15}}>
                 <Button
                     mode="contained"

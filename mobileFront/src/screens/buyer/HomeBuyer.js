@@ -8,20 +8,12 @@ import {AuthContext} from '../../context/AuthContext';
 
 export const HomeBuyer = ({navigation}) => {
     
+    const {user} = useContext(AuthContext)
     const [nome,SetNome] = React.useState()
     const [dataUser,setDataUser]= React.useState([])
     const [lastOrder,setLastOrder] = React.useState()
     
-    
-    
-    useEffect(() => {
-            setData()
-      });
 
-      async function setData(){
-        const {user} =useContext(AuthContext)
-        setDataUser(user)
-      }
     return (
         <View style={styles.container}>
             <View style={styles.personalData}>
@@ -33,7 +25,7 @@ export const HomeBuyer = ({navigation}) => {
                     />
                 </View>
                 <View style={styles.personalInfor}>
-                    <Text> aa{/* { user[1].nome  } */}</Text>
+                    <Text>{user[1].nome}</Text>
                 </View>
                 <TouchableOpacity style={styles.iconCar}
                     onPress={()=>{GoToEdit()}}

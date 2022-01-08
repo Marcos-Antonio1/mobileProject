@@ -1,5 +1,5 @@
 import React from 'react';
-import {View,Text,StyleSheet, Alert} from 'react-native';
+import {View,Text,StyleSheet, Alert ,KeyboardAvoidingView} from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
 import BuyerProvider from '../services/providers/BuyerProvider';
 
@@ -13,7 +13,7 @@ export const Registration = ({navigation}) =>{
     const [rua,setRua] =React.useState("")
 
     return(
-        <View style={styles.container}>
+        <KeyboardAvoidingView style={styles.container}>
             <Text style={styles.textTitle}>Cadastro</Text>
             <View>
                 <TextInput
@@ -32,6 +32,7 @@ export const Registration = ({navigation}) =>{
                     mode="outlined"
                     label="Senha"
                     value={senha}
+                    secureTextEntry={true}
                     onChangeText={text => setSenha(text)}
                 />
                 <TextInput
@@ -61,7 +62,7 @@ export const Registration = ({navigation}) =>{
                     onPress={() =>GotoLogin()}
                 >Confirmar</Button>
             </View>
-        </View>
+        </KeyboardAvoidingView>
     );
 
     async function GotoLogin(){

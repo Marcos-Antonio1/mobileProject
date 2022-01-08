@@ -7,7 +7,7 @@ import { MyCarousel } from "../../components/MyCarrosel";
 export const SeachProducts = ({navigation}) => {
     return (
         <View style={styles.container}>
-            <View style={styles.searchContainer}>
+{/*             <View style={styles.searchContainer}>
                 <TextInput
                     style={styles.labelSearch}
                     label=""
@@ -18,7 +18,7 @@ export const SeachProducts = ({navigation}) => {
                 > 
                     <FontAwesome name="search" size={30} color="#4B5C6B" />
             </TouchableOpacity>
-            </View>
+            </View> */}
             <View style={styles.categoryArea}>
                 <MyCarousel
                 />

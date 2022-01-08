@@ -4,7 +4,8 @@ import {
     StyleSheet,
     SafeAreaView,
     TextInput,
-    Alert
+    Alert,
+    KeyboardAvoidingView
 } from "react-native";
 
 import { Avatar , Button} from 'react-native-paper';
@@ -26,8 +27,9 @@ export const Login = ({navigation}) => {
             style={styles.logo}
             />
 
-        <SafeAreaView style ={ styles.inputs} >
+        <KeyboardAvoidingView style ={ styles.inputs} >
             <TextInput
+                autoCapitalize="none"
                 style={styles.input}
                 placeholder="Email"
                 value={email}
@@ -38,8 +40,9 @@ export const Login = ({navigation}) => {
                 placeholder="Senha"
                 value={senha}
                 onChangeText={text => setSenha(text)}
+                secureTextEntry={true}
             />
-            </SafeAreaView>
+            </KeyboardAvoidingView>
 
             <View style={styles.actionContainer}>
                 <Button
@@ -94,7 +97,7 @@ const styles = StyleSheet.create({
         flex:1,
         flexDirection:'column',
         justifyContent: 'flex-start',
-        marginTop:90
+        marginTop:70
     },
     logo:{
         alignSelf:'center'
