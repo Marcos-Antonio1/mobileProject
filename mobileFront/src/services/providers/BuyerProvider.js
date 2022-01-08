@@ -97,6 +97,15 @@ const order = async ( data ) => {
     }
 }
 
+const nextEstabilish = async () => {
+    try {
+        let response = await api.get('nextEstabilish');
+        return response.data
+    } catch (err) {
+        throw err;
+    }
+}
+
 
 const BuyerProvider ={
     registerBuyer,
@@ -109,7 +118,8 @@ const BuyerProvider ={
     acouque,
     agua,
     padaria,
-    order
+    order,
+    nextEstabilish
 }
 
 export default BuyerProvider;

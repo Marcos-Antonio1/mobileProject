@@ -230,28 +230,31 @@ const  buyer =[
       ]
     }
   ]
-  
+   
   const EstabelecimentosProximos = [
     {
       id:1,
       nome:"Cortes limpos",
-      latitude:null,
-      longitude:null,
+      latitude:-6.1243997508437795,
+      longitude:-36.81563728839977,
       image: "https://thumbs.dreamstime.com/z/imagens-do-alimento-ajustadas-ilustra%C3%A7%C3%B5es-da-carne-cartaz-para-o-a%C3%A7ougue-102379506.jpg" ,
-    },
+      descricao:"Açouque"
+    }, 
     {
       id:2,
       nome:"Massas 5r",
-      latitude:null,
-      longitude:null,
+      latitude:-6.12476764446574,
+      longitude:-36.81586056703807,
       image:'http://conteudo.imguol.com.br/c/entretenimento/45/2020/10/19/pao-frances---dona-deola-1603113166267_v2_1920x1920.jpg',
+      descricao:"Padaria"
     },
     {
       id:3,
       nome:"L Água",
-      latitude:null,
-      longitude:null,
+      latitude:-6.125015019842531,
+      longitude:-36.816485749151205,
       image: 'https://www.setegotas.com.br/wp-content/uploads/2017/03/gal%C3%A3o-de-%C3%A1gua-mineral.jpg' ,
+      descricao:"Venda de água"  
     }
   ]
 
