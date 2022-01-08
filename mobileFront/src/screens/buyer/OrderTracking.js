@@ -7,14 +7,14 @@ import BuyerProvider from '../../services/providers/BuyerProvider';
 export const OrdemTracking = ({route,navigation}) => {
     
     const [order,setOrder] = React.useState(route.params);
-
+    
     useEffect(() => {
         console.log(order)
     }, [])
 
     const _render = ({item}) =>(
         <>
-          <Text style={styles.TextList}> {item.nome}: R$ {item.valor},00</Text>
+          <Text style={styles.TextList}> {item.qtd_compra} x  {item.nome}: R$ {item.preco},00</Text>
         </>
     );
     return (

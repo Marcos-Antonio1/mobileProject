@@ -101,7 +101,7 @@ export const ConfirmBuyer = ({route,navigation}) => {
         }
           await BuyerProvider.order(dados)
          
-        
+          console.log(dados)
           Alert.alert("O pedido foi  realizado ")
          navigation.navigate("HomeBuyer")
 

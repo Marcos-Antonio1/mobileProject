@@ -11,12 +11,17 @@ export const HomeBuyer = ({navigation}) => {
     const [nome,SetNome] = React.useState()
     const [dataUser,setDataUser]= React.useState([])
     const [lastOrder,setLastOrder] = React.useState()
-
-    const {user} =useContext(AuthContext)
+    
+    
     
     useEffect(() => {
-        
-      },[]);
+            setData()
+      });
+
+      async function setData(){
+        const {user} =useContext(AuthContext)
+        setDataUser(user)
+      }
     return (
         <View style={styles.container}>
             <View style={styles.personalData}>
@@ -28,7 +33,7 @@ export const HomeBuyer = ({navigation}) => {
                     />
                 </View>
                 <View style={styles.personalInfor}>
-                    <Text> {user[1].nome} </Text>
+                    <Text> aa{/* { user[1].nome  } */}</Text>
                 </View>
                 <TouchableOpacity style={styles.iconCar}
                     onPress={()=>{GoToEdit()}}
@@ -58,7 +63,7 @@ export const HomeBuyer = ({navigation}) => {
                 <TouchableOpacity style= {styles.followOrders}
                     onPress={()=>goToOrdemTracking()}
                 >
-                    <Text style={styles.primaryTitle}>Acompanhar Pedidos:</Text>
+                    <Text style={styles.primaryTitle}>Acompanhar Pedidos</Text>
                 </TouchableOpacity>
                 
                 <TouchableOpacity style= {styles.searchEstablishments}
@@ -133,6 +138,8 @@ const styles = StyleSheet.create({
         borderColor:"#C3CFD9",
         borderRadius:7,
         flexGrow:2,
+        alignItems: "center",
+        justifyContent:"center",
         
     },
     searchEstablishments:{
@@ -143,6 +150,8 @@ const styles = StyleSheet.create({
         borderRadius:7,
         flexGrow:2,
         maxHeight:"15%",
+        alignItems: "center",
+        justifyContent:"center",
     },
     establishedContainer:{
         flexDirection:'row'
@@ -174,7 +183,8 @@ const styles = StyleSheet.create({
         margin:8,
         fontSize:17,
         color:"#6558F5",
-        fontWeight:'bold'
+        fontWeight:'bold',
+        
     },
     orderText:{
         fontSize:14,

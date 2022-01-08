@@ -1,55 +1,13 @@
 import React from "react";
 import {View, Text,StyleSheet, FlatList, Image, SafeAreaView, TouchableOpacity} from 'react-native';
-import Estabelecimento from '../../assets/estabelecimento.png'
 import { Avatar } from 'react-native-paper'
-import bolacha from '../../assets/bolachaRecheada.png';
-
-
-const produtos =[
-    {
-        id:1,
-        descricao:'bolacha recheada',
-        preco:"12,90",
-        imagem:Image.resolveAssetSource(bolacha).uri
-    },
-    {
-        id:2,
-        descricao:'bolacha recheada',
-        preco:"12,90",
-        imagem:Image.resolveAssetSource(bolacha).uri
-    },
-    {
-        id:3,
-        descricao:'bolacha recheada',
-        preco:"12,90",
-        imagem:Image.resolveAssetSource(bolacha).uri
-    },
-    {
-        id:4,
-        descricao:'bolacha recheada',
-        preco:"12,90",
-        imagem:Image.resolveAssetSource(bolacha).uri
-    },
-    {
-        id:5,
-        descricao:'bolacha recheada',
-        preco:"12,90",
-        imagem:Image.resolveAssetSource(bolacha).uri
-    },
-    {
-        id:6,
-        descricao:'bolacha recheada',
-        preco:"12,90",
-        imagem:Image.resolveAssetSource(bolacha).uri
-    }
-]
 
 export const ResultSearch = ({navigation}) =>{
     
 
     const _render = ({item}) =>(
         <TouchableOpacity style={ styles.productArea} onPress={()=>goToproduct()} >
-            <Avatar.Image size={100} source={require('../../assets/bolachaRecheada.png')}></Avatar.Image>
+            <Avatar.Image size={100} source={{}}></Avatar.Image>
             <View style={ styles.textDescription}>
                  <Text style={styles.textName}>{item.descricao}</Text>
                  <Text style={styles.textPrice}>R$ {item.preco}</Text>   

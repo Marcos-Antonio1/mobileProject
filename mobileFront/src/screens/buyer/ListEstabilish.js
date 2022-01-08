@@ -1,6 +1,5 @@
 import React,{useEffect,useState} from "react";
 import {View, Text,StyleSheet, FlatList, Image, SafeAreaView, TouchableOpacity} from 'react-native';
-import Estabelecimento from '../../assets/estabelecimento.png'
 import { Avatar } from 'react-native-paper'
 import BuyerProvider from '../../services/providers/BuyerProvider';
 

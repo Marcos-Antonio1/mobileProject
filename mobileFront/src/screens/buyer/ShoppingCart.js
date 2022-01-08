@@ -13,9 +13,8 @@ export const ShoppingCart = ({route,navigation}) => {
     const [total,setTotal]= useState()
 
     useEffect(() => {
-        
         calcTotal() 
-    },[] )
+    })
 
       async function calcTotal(){
         const valor = await itens.reduce(function(total,obj){

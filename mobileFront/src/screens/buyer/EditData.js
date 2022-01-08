@@ -15,9 +15,6 @@ export const EditData = ({navigation}) =>{
     const [rua,setRua] = React.useState(user[1].rua)
     const id = user[1].id
     
-    useEffect(() => {
-       
-     },[]);
 
     return(
         <View style={styles.container}>
@@ -76,7 +73,7 @@ export const EditData = ({navigation}) =>{
             id
         }
         await BuyerProvider.updateData(dados)
-        //updateUser(dados)
+        updateUser(dados)
         navigation.navigate("HomeBuyer")
     }
     

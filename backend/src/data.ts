@@ -10,7 +10,7 @@ const  buyer =[
     }
   ];
   const orders= [
-    {
+    /* {
       id:3,
       status:"pedido em andamento",
       total:8,
@@ -24,11 +24,11 @@ const  buyer =[
         {title: 'Em Transporte',circleSize:16, description:"Seu pedido saiu para a entrega",lineWidth:8,lineColor:"#D1CACA",circleColor:"#D1CACA"},
         {title: 'Entrega realizada',circleSize:16,lineWidth:8,circleColor:"#D1CACA"}
       ]
-  },
+  }, */
   
   ];
   const lastOrders = [
-    {
+    /* {
       id:1,
       status:"Pedido Concluído",
       total:8,
@@ -39,9 +39,9 @@ const  buyer =[
       tracking:[
       {time: '09:27',title: 'Pedido Fechado',circleSize:16,lineWidth:8} 
       ]
-  },
+  }, */
   
-  {
+  /* {
       id:2,
       status:"pedido Concluído",
       total:8,
@@ -52,7 +52,7 @@ const  buyer =[
       tracking:[
         {time: '09:27',title: 'Pedido Fechado',circleSize:16,lineWidth:8} 
       ]
-  }
+  } */
    
   ];
   

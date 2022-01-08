@@ -6,14 +6,21 @@ import BuyerProvider from '../../services/providers/BuyerProvider';
 export const ProductBuyer = ({navigation}) =>{
     
     const [orders,setOrders]= useState()
-      
+    const [isEmpty,setIsEmpty]=useState('') 
+    
     useEffect(() => {
-        getData()
+        getData() 
     }, [])
 
     async function getData(){
         const data = await BuyerProvider.lastOrders()
         setOrders(data)
+        if(data[0] == undefined || data[0] == null){
+            console.log('estou aqui')
+           setIsEmpty(true)
+        }else{
+            setIsEmpty(false)
+        }
     }
 
     const _render = ({item}) =>(
@@ -31,13 +38,16 @@ export const ProductBuyer = ({navigation}) =>{
     
     return(
         <View style={styles.container} >
-              <SafeAreaView >
+             {isEmpty ? <Text style={styles.emptyAlert}>Nenhum pedido cadastrado</Text>
+             :
+             <SafeAreaView >
                 <FlatList
                     data={orders}
                     renderItem={_render}
                     keyExtractor= {item =>item.id}
                 />
             </SafeAreaView>
+             }
         </View>
     )
 
@@ -82,4 +92,8 @@ const styles = StyleSheet.create({
         fontSize:14,
         marginLeft:40
     },
+    emptyAlert:{
+        fontSize:22,
+        fontWeight:"bold"
+    }
 })

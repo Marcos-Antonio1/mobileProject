@@ -1,6 +1,5 @@
 import React,{useEffect}  from "react";
 import { Text, View , StyleSheet,ScrollView ,SafeAreaView,FlatList} from 'react-native';
-import { Button } from 'react-native-paper';
 import Timeline from 'react-native-timeline-flatlist'
 
 
@@ -14,7 +13,7 @@ export const OrdemTrackingFinish = ({route,navigation}) => {
 
     const _render = ({item}) =>(
         <>
-          <Text style={styles.TextList}> {item.nome}: R$ {item.valor},00</Text>
+          <Text style={styles.TextList}> {item.qtd_compra} x {item.nome}: R$ {item.preco},00</Text>
         </>
     );
     return (
