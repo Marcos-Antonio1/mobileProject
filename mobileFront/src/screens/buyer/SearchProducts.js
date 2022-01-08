@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
     },
     searchContainer: {
         flexDirection:"row",
-        marginLeft:"10%",
+        marginLeft:"11%",
         marginBottom:"5%"
     },
     labelSearch:{
