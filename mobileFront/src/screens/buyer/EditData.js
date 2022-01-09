@@ -1,12 +1,12 @@
 import React,{useContext,useEffect} from 'react';
-import {View,Text,StyleSheet,KeyboardAvoidingView} from 'react-native';
+import {View,Text,StyleSheet,KeyboardAvoidingView, Alert} from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
 import {getStoragedUser} from '../../services/Storage';
 import {AuthContext} from '../../context/AuthContext';
 import BuyerProvider from '../../services/providers/BuyerProvider';
 export const EditData = ({navigation}) =>{
     const {user} =useContext(AuthContext)
-    const {updateUser} = useContext(AuthContext)
+    const {handlerLogin} = useContext(AuthContext)
 
     const [nome,setNome] =React.useState(user[1].nome)
     const [email,setEmail] =React.useState(user[1].email)
@@ -81,8 +81,11 @@ export const EditData = ({navigation}) =>{
             id, 
             numero
         }
-        await BuyerProvider.updateData(dados)
-         //updateUser(dados)
+
+        console.log({email:email,senha:user[1].senha})
+         await BuyerProvider.updateData(dados)
+        await handlerLogin({email:email,senha:user[1].senha})  
+        Alert.alert("dados alterados com sucesso")
         navigation.navigate("HomeBuyer")
     }
     

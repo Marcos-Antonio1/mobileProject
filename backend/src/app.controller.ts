@@ -25,6 +25,7 @@ export class AppController {
   registerBuyer(@Body ()body){
     body.id =this._ids+1;
     this._ids=+1
+    body.numero = parseInt(body.numero);
     Data.buyer.push(body)
   }
 
