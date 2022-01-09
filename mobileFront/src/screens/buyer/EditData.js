@@ -13,9 +13,9 @@ export const EditData = ({navigation}) =>{
     const [cidade,setCidade] =React.useState(user[1].cidade)
     const [bairro,setBairro] =React.useState(user[1].bairro)
     const [rua,setRua] = React.useState(user[1].rua)
+    const [numero,setNumero] = React.useState(user[1].numero)
     const id = user[1].id
     
-
     return(
         <View style={styles.container}>
             <Text style={styles.textTitle}>Editar Dados</Text>
@@ -52,6 +52,14 @@ export const EditData = ({navigation}) =>{
                     value={rua}
                     onChangeText={text => setRua(text)}
                 />
+                
+                <TextInput
+                    keyboardType="numeric"
+                    mode="outlined"
+                    label="Número da casa"
+                    value={String(numero)}
+                    onChangeText={text => setNumero(text)}
+                />
             </KeyboardAvoidingView>
             <View style={{marginTop:15}}>
                 <Button
@@ -70,10 +78,11 @@ export const EditData = ({navigation}) =>{
             cidade,
             bairro,
             rua,
-            id
+            id, 
+            numero
         }
         await BuyerProvider.updateData(dados)
-        updateUser(dados)
+         //updateUser(dados)
         navigation.navigate("HomeBuyer")
     }
     

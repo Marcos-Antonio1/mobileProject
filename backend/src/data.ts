@@ -1,4 +1,4 @@
-const  buyer =[
+const  buyer = [
     { 
       id:1, 
       nome:"Marcos",
@@ -6,7 +6,8 @@ const  buyer =[
       senha:"123",
       cidade:"florania",
       bairro:"Flores",
-      rua:"qualquer"
+      rua:"qualquer",
+      numero:"36"
     }
   ];
   const orders= [

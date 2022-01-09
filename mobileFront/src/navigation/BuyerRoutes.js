@@ -8,7 +8,6 @@ import { ShoppingCart } from '../screens/buyer/ShoppingCart';
 import { ListEstabilish } from "../screens/buyer/ListEstabilish";
 import { Estabilish } from "../screens/buyer/Estabilish";
 import { ProductDescription } from "../screens/buyer/ProductDescription";
-import { ResultSearch } from "../screens/buyer/ResultSearch";
 import { ConfirmBuyer } from "../screens/buyer/ConfirmBuyer";
 import { EditData } from "../screens/buyer/EditData";
 import { Login } from "../screens/Login";
@@ -78,10 +77,6 @@ export const BuyerRoutes = () => {
             <Stack.Screen 
             name="ProductDescription"
             component={ ProductDescription}
-            />
-            <Stack.Screen
-            name="ResultSearch"
-            component={ ResultSearch }
             />
 
             <Stack.Screen 

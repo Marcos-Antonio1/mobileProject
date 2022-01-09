@@ -1,5 +1,5 @@
 import React from 'react';
-import {View,Text,StyleSheet, Alert ,KeyboardAvoidingView} from 'react-native';
+import {View,Text,StyleSheet, Alert ,KeyboardAvoidingView, ScrollView} from 'react-native';
 import { TextInput, Button } from 'react-native-paper';
 import BuyerProvider from '../services/providers/BuyerProvider';
 
@@ -11,9 +11,11 @@ export const Registration = ({navigation}) =>{
     const [cidade,setCidade] =React.useState("")
     const [bairro,setBairro] =React.useState("")
     const [rua,setRua] =React.useState("")
+    const [numero,setNumero] = React.useState()
 
     return(
-        <KeyboardAvoidingView style={styles.container}>
+        <ScrollView>
+            <KeyboardAvoidingView style={styles.container}>
             <Text style={styles.textTitle}>Cadastro</Text>
             <View>
                 <TextInput
@@ -54,6 +56,13 @@ export const Registration = ({navigation}) =>{
                     value={rua}
                     onChangeText={text => setRua(text)}
                 />
+                <TextInput
+                    keyboardType="numeric"
+                    mode="outlined"
+                    label="Número da casa"
+                    value={numero}
+                    onChangeText={text => setNumero(text)}
+                />
             </View>
             <View style={{marginTop:15}}>
                 <Button
@@ -63,6 +72,7 @@ export const Registration = ({navigation}) =>{
                 >Confirmar</Button>
             </View>
         </KeyboardAvoidingView>
+        </ScrollView>
     );
 
     async function GotoLogin(){
@@ -73,7 +83,8 @@ export const Registration = ({navigation}) =>{
                 senha,
                 cidade,
                 bairro,
-                rua
+                rua,
+                numero
             }
           await  BuyerProvider.registerBuyer(dados)
         }catch(r){

@@ -72,7 +72,7 @@ export const ConfirmBuyer = ({route,navigation}) => {
                 style={{ height: 50, width: 300,border: '1px solid'}}
                 onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
                 >
-                <Picker.Item label={`Rua ${user[1].rua},bairro ${user[1].bairro} n⁰ 35` } value="1" />
+                <Picker.Item label={`Rua ${user[1].rua},bairro ${user[1].bairro} n⁰ ${user[1].numero}` } value="1" />
                 </Picker>
 
                 <Text style={styles.textOp}>Método de pagamento :</Text>

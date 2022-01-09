@@ -2,14 +2,12 @@ import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 import Data from './data';
 
-
 interface Track {
   time:string,
   title: string,
   circleSize:number,
   lineWidth:number
 }
-
 
 @Controller()
 export class AppController {
@@ -37,7 +35,6 @@ export class AppController {
 
   @Post('/login')
   login(@Body() body){
-    console.log(body)
     let login ={logged:false}
     let user = {}
     Data.buyer.forEach(function(el, i){
@@ -62,7 +59,8 @@ export class AppController {
         senha:user.senha,
         cidade: body.cidade,
         bairro: body.bairro,
-        rua:body.rua
+        rua:body.rua,
+        numero:parseInt(body.numero),
       }
 
       Data.buyer[index]= newData
@@ -90,7 +88,6 @@ export class AppController {
             element.status ="pedido Concluído"
             element.tracking = [{time: str_hora,title: 'Pedido Fechado',circleSize:16,lineWidth:8}]
 
-            console.log(element)
             Data.lastOrders.push(element)
             Data.orders.splice(index,1);
          }
