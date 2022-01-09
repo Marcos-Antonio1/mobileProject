@@ -195,7 +195,6 @@ const  buyer = [
       ]
     }
   ]
-   
   const EstabelecimentosProximos = [
     {
       id:1,

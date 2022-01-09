@@ -2,12 +2,6 @@ import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AppService } from './app.service';
 import Data from './data';
 
-interface Track {
-  time:string,
-  title: string,
-  circleSize:number,
-  lineWidth:number
-}
 
 @Controller()
 export class AppController {
@@ -29,7 +23,7 @@ export class AppController {
     Data.buyer.push(body)
   }
 
-  @Get('/all')
+  @Get('/allBuyers')
   all(){
     return Data.buyer;
   }
