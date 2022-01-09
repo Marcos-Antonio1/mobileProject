@@ -1,5 +1,5 @@
 import React,{useEffect, useState}  from "react";
-import { Text, View, StyleSheet, SafeAreaView,FlatList,Image,TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, SafeAreaView,FlatList,Image,TouchableOpacity} from 'react-native';
 import { Button } from 'react-native-paper';
 import { AntDesign } from '@expo/vector-icons';
 
@@ -7,13 +7,15 @@ import { AntDesign } from '@expo/vector-icons';
 export const ShoppingCart = ({route,navigation}) => {
     
     const {itensCart}= route.params;
-    
 
+    
     const [itens,setItens]=useState(itensCart);
     const [total,setTotal]= useState()
+    const [cartIsEmpty,setCartIsEmpty] = useState()
 
     useEffect(() => {
         calcTotal() 
+        checkIsEmpty()
     })
 
       async function calcTotal(){
@@ -24,8 +26,16 @@ export const ShoppingCart = ({route,navigation}) => {
         setTotal(valor)
        
     }
+    
+    function checkIsEmpty() {
+        if(itens[0] == undefined || itens.length == 0){
+            setCartIsEmpty(true)
+        }else{
+            setCartIsEmpty(false)
+        }
+    }
 
-    function plus(product){
+    async function plus(product){
         let index = -1;
         itensCart.forEach(function(elem, i){
             if(elem.idProduto == product.idProduto){
@@ -37,14 +47,17 @@ export const ShoppingCart = ({route,navigation}) => {
        CopyState[index].qtd_compra +=1;
 
        setItens(CopyState)
-
-       console.log(itens)
+       calcTotal()       
     }
 
     function minus(product){
         if(product.qtd_compra == 1){
-          setItens(itens.slice(itens.indexOf(product),1))
-          console.log(itens)
+          copyState = itens;
+           copyState.splice(copyState.indexOf(product),1)
+          setItens(copyState)
+          calcTotal()
+          checkIsEmpty()
+          return; 
         }else{
             let index = -1;
             itensCart.forEach(function(elem, i){
@@ -57,6 +70,7 @@ export const ShoppingCart = ({route,navigation}) => {
            CopyState[index].qtd_compra -=1;
 
            setItens(CopyState)
+           calcTotal()
 
         } 
     }
@@ -107,25 +121,28 @@ export const ShoppingCart = ({route,navigation}) => {
     
     return (
         <View style={styles.container}>
-            
-            <SafeAreaView >
+           { cartIsEmpty ? <Text style={styles.cartEmpty}> Seu  carrinho está vazio</Text>
+           : <SafeAreaView >
                 <FlatList
                     data={itens}
                     renderItem={_render}
                     keyExtractor= {item =>item.id}
                 />
-            </SafeAreaView>
-            
-            <View sytle={styles.totalArea}>
-                <Text style={styles.totalText}> Total R$ {total},00 </Text>
-            </View>
-
-            <Button
-                mode="contained"
-                style={{marginBottom:20}}
-                onPress={()=>buy()}
-            >Continuar a compra</Button>
-
+            </SafeAreaView> 
+           }
+        { cartIsEmpty ?
+        <Text> </Text>
+        :<View sytle={styles.totalArea}>
+            <Text style={styles.totalText}> Total R$ {total},00 </Text>
+        </View>
+        }
+        { cartIsEmpty ? <Text> </Text>
+        :<Button
+            mode="contained"
+            style={{marginBottom:20}}
+            onPress={()=>buy()}
+        >Continuar a compra</Button>
+        }
         </View>
     );
 
@@ -199,6 +216,13 @@ const styles = StyleSheet.create({
     TextoValue:{
         fontSize:20,
         fontWeight:"bold",
+    },
+    cartEmpty :{
+        alignContent:'center',
+        fontSize:25,
+        fontWeight:"bold",
+        marginTop:200,
+        marginLeft:20
     }
 
 })

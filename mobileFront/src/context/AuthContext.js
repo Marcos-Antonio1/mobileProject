@@ -13,18 +13,12 @@ function AuthProvider ({children}){
         setUser(result)
         return result;
     }
-
-    function updateUser(dados){
-          setUser(dados)
-    } 
-
     return(    
        <AuthContext.Provider
            value ={{
             authenticated,
             handlerLogin,
-            user,
-            updateUser
+            user,   
         }}
        >
            {children}
